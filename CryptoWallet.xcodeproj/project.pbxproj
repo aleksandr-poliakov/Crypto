@@ -18,6 +18,7 @@
 		1F2E679628FC27660031941D /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679528FC27660031941D /* CoinModel.swift */; };
 		1F2E679828FC2BEF0031941D /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679728FC2BEF0031941D /* CoinRowView.swift */; };
 		1F2E679A28FC2C160031941D /* PreviewProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */; };
+		1F2E679C28FC2FD10031941D /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679B28FC2FD10031941D /* Double+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		1F2E679528FC27660031941D /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		1F2E679728FC2BEF0031941D /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Extensions.swift"; sourceTree = "<group>"; };
+		1F2E679B28FC2FD10031941D /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				1F2E678628FC15310031941D /* Color.swift */,
 				1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */,
+				1F2E679B28FC2FD10031941D /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				1F2E677A28FC14B60031941D /* ContentView.swift in Sources */,
 				1F2E678D28FC178B0031941D /* HomeView.swift in Sources */,
 				1F2E677828FC14B60031941D /* CryptoWalletApp.swift in Sources */,
+				1F2E679C28FC2FD10031941D /* Double+Extensions.swift in Sources */,
 				1F2E679628FC27660031941D /* CoinModel.swift in Sources */,
 				1F2E679A28FC2C160031941D /* PreviewProvider+Extensions.swift in Sources */,
 				1F2E679128FC187A0031941D /* CircleButtonView.swift in Sources */,
