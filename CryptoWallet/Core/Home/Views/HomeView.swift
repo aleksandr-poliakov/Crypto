@@ -19,26 +19,13 @@ struct HomeView: View {
             
             VStack {
                 header
-                
-                HStack {
-                    Text("Coin")
-                    Spacer()
-                    if showPortfolio {
-                        Text("Holdings")
-                    }
-                    Text("Price")
-                        .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
-                }
-                .font(.caption)
-                .foregroundColor(Color.theme.secondaryText)
-                .padding(.horizontal)
-                
+                columnTitles
                 
                 if !showPortfolio {
                     allCoins
                         .transition(.move(edge: .leading))
                 } else {
-                    portfolioCoint
+                    portfolioCoins
                         .transition(.move(edge: .trailing))
                 }
                 
@@ -94,11 +81,26 @@ extension HomeView {
         .listStyle(.plain)
     }
     
-    private var portfolioCoint: some View {
+    private var portfolioCoins: some View {
         List(viewModel.portfolioCoins) { coin in
             CoinRowView(coin: coin, showHoldings: true)
                 .listRowInsets(EdgeInsets(top: 10, leading: .zero, bottom: 10, trailing: 10))
         }
         .listStyle(.plain)
+    }
+    
+    private var columnTitles: some View {
+        HStack {
+            Text("Coin")
+            Spacer()
+            if showPortfolio {
+                Text("Holdings")
+            }
+            Text("Price")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+        }
+        .font(.caption)
+        .foregroundColor(Color.theme.secondaryText)
+        .padding(.horizontal)
     }
 }
