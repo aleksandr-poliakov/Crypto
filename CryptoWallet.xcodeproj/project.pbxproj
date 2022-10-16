@@ -20,6 +20,7 @@
 		1F2E679A28FC2C160031941D /* PreviewProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */; };
 		1F2E679C28FC2FD10031941D /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679B28FC2FD10031941D /* Double+Extensions.swift */; };
 		1F2E679E28FC3BD30031941D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679D28FC3BD30031941D /* HomeViewModel.swift */; };
+		1FB0906228FC531E005EDAE6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0906128FC531E005EDAE6 /* NetworkManager.swift */; };
 		1FD9245628FC417700E87611 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9245528FC417700E87611 /* CoinDataService.swift */; };
 		1FD9245928FC455600E87611 /* HomeViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD9245828FC455600E87611 /* HomeViewComposer.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Extensions.swift"; sourceTree = "<group>"; };
 		1F2E679B28FC2FD10031941D /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		1F2E679D28FC3BD30031941D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1FB0906128FC531E005EDAE6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1FD9245528FC417700E87611 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		1FD9245828FC455600E87611 /* HomeViewComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				1FD9245728FC454B00E87611 /* Composer */,
 				1F2E678528FC15270031941D /* Extensions */,
 				1F2E679428FC275A0031941D /* Models */,
+				1FB0906028FC5308005EDAE6 /* NetworkLayer */,
 				1F2E67A028FC413E0031941D /* Service */,
 				1F2E678828FC17560031941D /* Core */,
 				1F2E677928FC14B60031941D /* ContentView.swift */,
@@ -172,6 +175,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		1FB0906028FC5308005EDAE6 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				1FB0906128FC531E005EDAE6 /* NetworkManager.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		1FD9245728FC454B00E87611 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +271,7 @@
 				1F2E679C28FC2FD10031941D /* Double+Extensions.swift in Sources */,
 				1F2E679628FC27660031941D /* CoinModel.swift in Sources */,
 				1F2E679A28FC2C160031941D /* PreviewProvider+Extensions.swift in Sources */,
+				1FB0906228FC531E005EDAE6 /* NetworkManager.swift in Sources */,
 				1F2E679128FC187A0031941D /* CircleButtonView.swift in Sources */,
 				1F2E678728FC15310031941D /* Color.swift in Sources */,
 				1F2E679328FC1DA60031941D /* CircleButtonAnimationView.swift in Sources */,

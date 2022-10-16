@@ -20,6 +20,12 @@ final class CoinDataService: CoinDataServiceProtocol {
         case invalidRequestError(String)
     }
     
+    private let manager: NetworkManager<[CoinModel]>
+    
+    init(manager: NetworkManager<[CoinModel]>) {
+        self.manager = manager
+    }
+    
     func getCoins() -> AnyPublisher<[CoinModel], Error> {
         guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h")
         else {
@@ -27,10 +33,6 @@ final class CoinDataService: CoinDataServiceProtocol {
                 .eraseToAnyPublisher()
         }
         
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .receive(on: DispatchQueue.main)
-            .map(\.data)
-            .decode(type: [CoinModel].self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
+        return manager.download(url: url)
     }
 }
