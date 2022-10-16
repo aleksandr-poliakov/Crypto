@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
     
     var body: some View {
@@ -18,6 +19,28 @@ struct HomeView: View {
             
             VStack {
                 header
+                
+                HStack {
+                    Text("Coin")
+                    Spacer()
+                    if showPortfolio {
+                        Text("Holdings")
+                    }
+                    Text("Price")
+                        .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+                }
+                .font(.caption)
+                .foregroundColor(Color.theme.secondaryText)
+                .padding(.horizontal)
+                
+                
+                if !showPortfolio {
+                    allCoins
+                        .transition(.move(edge: .leading))
+                } else {
+                    portfolioCoint
+                        .transition(.move(edge: .trailing))
+                }
                 
                 Spacer()
             }
@@ -31,6 +54,7 @@ struct HomeView_Previews: PreviewProvider {
             HomeView()
                 .navigationBarHidden(true)
         }
+        .environmentObject(dev.homeViewModel)
     }
 }
 
@@ -60,5 +84,21 @@ extension HomeView {
                 }
         }
         .padding(.horizontal)
+    }
+    
+    private var allCoins: some View {
+        List(viewModel.allCoins) { coin in
+            CoinRowView(coin: coin, showHoldings: false)
+                .listRowInsets(EdgeInsets(top: 10, leading: .zero, bottom: 10, trailing: 10))
+        }
+        .listStyle(.plain)
+    }
+    
+    private var portfolioCoint: some View {
+        List(viewModel.portfolioCoins) { coin in
+            CoinRowView(coin: coin, showHoldings: true)
+                .listRowInsets(EdgeInsets(top: 10, leading: .zero, bottom: 10, trailing: 10))
+        }
+        .listStyle(.plain)
     }
 }

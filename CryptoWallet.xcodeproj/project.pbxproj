@@ -19,6 +19,7 @@
 		1F2E679828FC2BEF0031941D /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679728FC2BEF0031941D /* CoinRowView.swift */; };
 		1F2E679A28FC2C160031941D /* PreviewProvider+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */; };
 		1F2E679C28FC2FD10031941D /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679B28FC2FD10031941D /* Double+Extensions.swift */; };
+		1F2E679E28FC3BD30031941D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E679D28FC3BD30031941D /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		1F2E679728FC2BEF0031941D /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		1F2E679928FC2C160031941D /* PreviewProvider+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Extensions.swift"; sourceTree = "<group>"; };
 		1F2E679B28FC2FD10031941D /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		1F2E679D28FC3BD30031941D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		1F2E678B28FC17770031941D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1F2E679D28FC3BD30031941D /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F2E679828FC2BEF0031941D /* CoinRowView.swift in Sources */,
+				1F2E679E28FC3BD30031941D /* HomeViewModel.swift in Sources */,
 				1F2E677A28FC14B60031941D /* ContentView.swift in Sources */,
 				1F2E678D28FC178B0031941D /* HomeView.swift in Sources */,
 				1F2E677828FC14B60031941D /* CryptoWalletApp.swift in Sources */,
