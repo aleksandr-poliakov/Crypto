@@ -7,6 +7,12 @@
 
 import Foundation
 
+/*
+ https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h
+ 
+ refer to this json
+ */
+
 // MARK: - CoreModel
 struct CoreModel: Identifiable, Codable {
     let id, symbol, name: String
@@ -51,6 +57,14 @@ struct CoreModel: Identifiable, Codable {
         case sparklineIn7D = "sparkline_in_7d"
         case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
         case currentHoldings
+    }
+    
+    var currentHoldingValue: Double {
+        return (currentHoldings ?? 0) * currentPrice
+    }
+    
+    var rank: Int  {
+        return Int(marketCapRank)
     }
     
     func updateHoldings(amount: Double) -> CoreModel {
