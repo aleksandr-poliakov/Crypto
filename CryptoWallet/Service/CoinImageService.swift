@@ -8,6 +8,10 @@
 import Combine
 import UIKit
 
+protocol ImageLoader: AnyObject {
+    func downloadImage(urlString: String) -> AnyPublisher<UIImage, Error>
+}
+
 final class CoinImageService: ImageLoader {
     
     enum APIError: Error {
