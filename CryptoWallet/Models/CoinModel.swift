@@ -15,20 +15,20 @@ import Foundation
 
 // MARK: - CoinModel
 struct CoinModel: Identifiable, Codable {
-    let id, symbol, name: String
-    let image: String
-    let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation, totalVolume: Int
-    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double
-    let marketCapChange24H, marketCapChangePercentage24H: Double
-    let circulatingSupply, totalSupply, maxSupply, ath: Int
-    let athChangePercentage: Double
-    let athDate: String
-    let atl, atlChangePercentage: Double
-    let atlDate: String
-    let lastUpdated: String
-    let sparklineIn7D: SparklineIn7D
-    let priceChangePercentage24HInCurrency: Double
+    let id, symbol, name: String?
+    let image: String?
+    let currentPrice: Double?
+    let marketCap, marketCapRank, fullyDilutedValuation: Int?
+    let high24H, low24H, priceChange24H, priceChangePercentage24H, totalVolume: Double?
+    let marketCapChange24H, marketCapChangePercentage24H: Double?
+    let circulatingSupply, totalSupply, maxSupply, ath: Double?
+    let athChangePercentage: Double?
+    let athDate: String?
+    let atl, atlChangePercentage: Double?
+    let atlDate: String?
+    let lastUpdated: String?
+    let sparklineIn7D: SparklineIn7D?
+    let priceChangePercentage24HInCurrency: Double?
     let currentHoldings: Double?
 
     enum CodingKeys: String, CodingKey {
@@ -60,11 +60,11 @@ struct CoinModel: Identifiable, Codable {
     }
     
     var currentHoldingValue: Double {
-        return (currentHoldings ?? 0) * currentPrice
+        return (currentHoldings ?? 0) * (currentPrice ?? 0)
     }
     
     var rank: Int  {
-        return Int(marketCapRank)
+        return Int(marketCapRank ?? 0)
     }
     
     func updateHoldings(amount: Double) -> CoinModel {
@@ -76,11 +76,11 @@ struct CoinModel: Identifiable, Codable {
                          marketCap: marketCap,
                          marketCapRank: marketCapRank,
                          fullyDilutedValuation: fullyDilutedValuation,
-                         totalVolume: totalVolume,
-                         high24H: high24H,
-                         low24H: low24H,
-                         priceChange24H: priceChange24H,
-                         priceChangePercentage24H: priceChangePercentage24H,
+                         high24H: totalVolume,
+                         low24H: high24H,
+                         priceChange24H: low24H,
+                         priceChangePercentage24H: priceChange24H,
+                         totalVolume: priceChangePercentage24H,
                          marketCapChange24H: marketCapChange24H,
                          marketCapChangePercentage24H: marketCapChangePercentage24H,
                          circulatingSupply: circulatingSupply,

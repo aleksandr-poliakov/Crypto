@@ -54,7 +54,7 @@ extension CoinRowView {
             
             Circle()
                 .frame(width: 30, height: 30)
-            Text(coin.symbol.uppercased())
+            Text(coin.symbol?.uppercased() ?? "")
                 .font(.headline)
                 .padding(6)
                 .foregroundColor(Color.theme.accent)
@@ -74,11 +74,11 @@ extension CoinRowView {
     /// right column
     private var rightColumn: some View {
         VStack(alignment: .trailing) {
-            Text(coin.currentPrice.asCurrencyWithFormatterOf6MaximumDigits())
+            Text(coin.currentPrice?.asCurrencyWithFormatterOf6MaximumDigits() ?? "")
                 .bold()
                 .foregroundColor(Color.theme.accent)
-            Text(coin.priceChangePercentage24H.asPercentString())
-                .foregroundColor(coin.priceChangePercentage24H >= 0 ? Color.theme.green : Color.theme.red)
+            Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
+                .foregroundColor(coin.priceChangePercentage24H ?? 0 >= 0 ? Color.theme.green : Color.theme.red)
         }
         .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
     }

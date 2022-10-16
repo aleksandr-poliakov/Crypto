@@ -9,8 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @EnvironmentObject private var viewModel: HomeViewModel
+    @StateObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
+    
+    init(service: CoinDataServiceProtocol, showPortfolio: Bool) {
+        self.showPortfolio = showPortfolio
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(service: service))
+    }
     
     var body: some View {
         ZStack {
@@ -31,17 +36,17 @@ struct HomeView: View {
                 
                 Spacer()
             }
-        }
+        }.onAppear(perform: viewModel.loadCoins)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            HomeView(service: CoinDataService(),
+                     showPortfolio: false)
                 .navigationBarHidden(true)
         }
-        .environmentObject(dev.homeViewModel)
     }
 }
 
