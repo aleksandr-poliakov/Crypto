@@ -13,8 +13,8 @@ import Foundation
  refer to this json
  */
 
-// MARK: - CoreModel
-struct CoreModel: Identifiable, Codable {
+// MARK: - CoinModel
+struct CoinModel: Identifiable, Codable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
@@ -67,8 +67,8 @@ struct CoreModel: Identifiable, Codable {
         return Int(marketCapRank)
     }
     
-    func updateHoldings(amount: Double) -> CoreModel {
-        return CoreModel(id: id,
+    func updateHoldings(amount: Double) -> CoinModel {
+        return CoinModel(id: id,
                          symbol: symbol,
                          name: name,
                          image: image,
