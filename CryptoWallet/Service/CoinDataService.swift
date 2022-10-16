@@ -20,9 +20,9 @@ final class CoinDataService: CoinDataServiceProtocol {
         case invalidRequestError(String)
     }
     
-    private let manager: NetworkManager<[CoinModel]>
+    private let manager: CoinNetworkManager
     
-    init(manager: NetworkManager<[CoinModel]>) {
+    init(manager: CoinNetworkManager) {
         self.manager = manager
     }
     

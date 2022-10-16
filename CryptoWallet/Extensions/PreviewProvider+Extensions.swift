@@ -17,7 +17,7 @@ class DeveloperPreview {
     static let instance = DeveloperPreview()
     private init() {}
 
-    let homeViewModel = HomeViewModel(service: CoinDataService(manager: NetworkManager()))
+    let homeViewModel = HomeViewModel(service: CoinDataService(manager: CoinManager()))
     
     let coin = CoinModel(id: "bitcoin", symbol: "btc", name: "Bitcoin", image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579", currentPrice: 19141.25, marketCap: 367111585133, marketCapRank: 1, fullyDilutedValuation: 401929702596, high24H: 12387988153, low24H: 19194.78, priceChange24H: 19030.3, priceChangePercentage24H: -13.256947643159947, totalVolume: -0.06921, marketCapChange24H: -202542808.40411377, marketCapChangePercentage24H: -0.05514, circulatingSupply: 19180825, totalSupply: 21000000, maxSupply: 21000000, ath: 69045, athChangePercentage: -72.28442, athDate: "2021-11-10T14:24:11.849Z", atl: 67.81, atlChangePercentage: 28120.67813, atlDate: "2013-07-06T00:00:00.000Z", lastUpdated: "2022-10-16T11:55:03.246Z", sparklineIn7D: SparklineIn7D(price: [
         19409.815660718283,

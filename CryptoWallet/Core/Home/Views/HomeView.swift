@@ -43,7 +43,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView(service: CoinDataService(manager: NetworkManager()),
+            HomeView(service: CoinDataService(manager: CoinManager()),
                      showPortfolio: false)
                 .navigationBarHidden(true)
         }
