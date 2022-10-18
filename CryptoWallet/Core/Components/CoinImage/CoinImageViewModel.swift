@@ -10,7 +10,6 @@ import Combine
 
 class CoinImageViewModel: ObservableObject {
     @Published var image: UIImage? = nil
-    @Published var isLoading: Bool = false
     private let service: ImageLoader
     private let store: LocalStore
     private let coin: CoinModel
@@ -31,9 +30,7 @@ class CoinImageViewModel: ObservableObject {
         if let fileImage = store.getImage(imageName: imageName, folderName: folderName) {
             image = fileImage
         } else {
-            service.downloadImage(urlString: imageString).sink { [weak self] _ in
-                self?.isLoading = false
-            } receiveValue: { [weak self] image in
+            service.downloadImage(urlString: imageString).sink { _ in } receiveValue: { [weak self] image in
                 guard let self = self else { return }
                 
                 self.image = image

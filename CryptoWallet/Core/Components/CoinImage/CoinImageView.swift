@@ -21,8 +21,6 @@ struct CoinImageView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-            } else if viewModel.isLoading {
-                
             } else {
                 Image(systemName: "questionmark")
                     .foregroundColor(Color.theme.secondaryText)
