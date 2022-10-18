@@ -11,8 +11,8 @@ struct CoinImageView: View {
     
     @StateObject private var viewModel: CoinImageViewModel
     
-    init(service: ImageLoader, coin: CoinModel) {
-        self._viewModel = StateObject(wrappedValue: CoinImageViewModel(service: service, coin: coin))
+    init(service: ImageLoader, store: LocalStore, coin: CoinModel) {
+        self._viewModel = StateObject(wrappedValue: CoinImageViewModel(service: service, store: store, coin: coin))
     }
     
     var body: some View {
@@ -33,7 +33,7 @@ struct CoinImageView: View {
 
 struct CoinImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinImageView(service: CoinImageService(manager: ImageManager()), coin: dev.coin)
+        CoinImageView(service: CoinImageService(manager: ImageManager()), store: LocalFileManager(), coin: dev.coin)
             .padding()
             .previewLayout(.sizeThatFits)
     }

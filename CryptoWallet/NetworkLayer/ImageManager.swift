@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-protocol ImageNetworkManager: AnyObject {
+protocol ImageNetworkManager {
     func download(url: URL) -> AnyPublisher<UIImage, Error>
 }
 

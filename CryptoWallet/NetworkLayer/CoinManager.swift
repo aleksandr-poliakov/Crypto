@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol CoinNetworkManager: AnyObject {
+protocol CoinNetworkManager {
     func download(url: URL) -> AnyPublisher<[CoinModel], Error>
 }
 

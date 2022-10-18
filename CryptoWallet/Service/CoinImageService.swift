@@ -8,9 +8,10 @@
 import Combine
 import UIKit
 
-protocol ImageLoader: AnyObject {
+protocol ImageLoader {
     func downloadImage(urlString: String) -> AnyPublisher<UIImage, Error>
 }
+
 
 final class CoinImageService: ImageLoader {
     

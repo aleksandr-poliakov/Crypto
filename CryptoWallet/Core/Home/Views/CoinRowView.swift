@@ -52,7 +52,7 @@ extension CoinRowView {
                 .foregroundColor(Color.theme.secondaryText)
                 .frame(minWidth: 30)
             
-            CoinImageView(service: CoinImageService(manager: ImageManager()), coin: coin)
+            CoinImageView(service: CoinImageService(manager: ImageManager()), store: LocalFileManager(), coin: coin)
                 .frame(width: 30, height: 30)
             Text(coin.symbol?.uppercased() ?? "")
                 .font(.headline)
