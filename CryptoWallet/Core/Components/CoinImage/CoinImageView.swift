@@ -31,7 +31,9 @@ struct CoinImageView: View {
 
 struct CoinImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinImageView(service: CoinImageService(manager: ImageManager()), store: LocalFileManager(), coin: dev.coin)
+        CoinImageView(service: CoinImageService(manager: ImageManager()),
+                      store: LocalFileManager(),
+                      coin: dev.coin)
             .padding()
             .previewLayout(.sizeThatFits)
     }

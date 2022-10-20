@@ -14,23 +14,46 @@ final class HomeViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
+    @Published var searchText: String = ""
     
     init(service: CoinDataServiceProtocol) {
         self.service = service
+        addSubscribers()
     }
     
     func loadCoins() {
-        service.getCoins().sink(
-            receiveCompletion: { completion in
-            switch completion {
-                case .finished: print("Finished")
-                case .failure(let error): print(error)
-                }
-            }, receiveValue: { [weak self] coins in
+        service.getCoins()
+    }
+    
+    private func addSubscribers() {
+        $searchText
+            .combineLatest(service.allCoins)
+            .map(filterCoins)
+            .sink { [weak self] coins in
                 self?.allCoins = coins
                 self?.portfolioCoins = coins
             }
-        )
-        .store(in: &cancellables)
+            .store(in: &cancellables)
+    }
+    
+    private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
+        guard !text.isEmpty else {
+            return coins
+        }
+        
+        let lowercasedText = text.lowercased()
+        return coins.filter { (coin) -> Bool in
+            guard
+                let name = coin.name,
+                let symbol = coin.symbol,
+                let id = coin.id
+            else {
+                return false
+            }
+            
+            return name.lowercased().contains(lowercasedText) ||
+                   symbol.lowercased().contains(lowercasedText) ||
+                   id.lowercased().contains(lowercasedText)
+        }
     }
 }

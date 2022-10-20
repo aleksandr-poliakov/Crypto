@@ -10,10 +10,13 @@ import Combine
 
 
 protocol CoinDataServiceProtocol {
-    func getCoins() -> AnyPublisher<[CoinModel], Error>
+    var allCoins: Published<[CoinModel]>.Publisher { get }
+    
+    func getCoins()
 }
 
 final class CoinDataService: CoinDataServiceProtocol {
+    
     //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h
 
     enum APIError: Error {
@@ -21,18 +24,25 @@ final class CoinDataService: CoinDataServiceProtocol {
     }
     
     private let manager: CoinNetworkManager
+    private var cancellable: AnyCancellable?
+    @Published var coins: [CoinModel] = []
+    var allCoins: Published<[CoinModel]>.Publisher { $coins }
     
     init(manager: CoinNetworkManager) {
         self.manager = manager
     }
     
-    func getCoins() -> AnyPublisher<[CoinModel], Error> {
+    func getCoins() {
         guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h")
         else {
-            return Fail(error: APIError.invalidRequestError("URL invalid"))
-                .eraseToAnyPublisher()
+            return
         }
-        
-        return manager.download(url: url)
+    
+        cancellable = manager.download(url: url).sink(receiveCompletion: { _ in
+            
+        }, receiveValue: { [weak self] coins in
+            self?.coins = coins
+            self?.cancellable?.cancel()
+        })
     }
 }
