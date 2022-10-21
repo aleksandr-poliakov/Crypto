@@ -12,7 +12,6 @@ protocol ImageLoader {
     func downloadImage(urlString: String) -> AnyPublisher<UIImage, Error>
 }
 
-
 final class CoinImageService: ImageLoader {
     
     enum APIError: Error {

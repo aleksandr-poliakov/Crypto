@@ -12,9 +12,9 @@ struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
     
-    init(service: CoinDataServiceProtocol, showPortfolio: Bool) {
+    init(coinService: CoinDataServiceProtocol, marketService: MarketDataServiceProtocol, showPortfolio: Bool) {
         self.showPortfolio = showPortfolio
-        self._viewModel = StateObject(wrappedValue: HomeViewModel(service: service))
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(coinService: coinService, marketService: marketService))
     }
     
     var body: some View {
@@ -25,6 +25,8 @@ struct HomeView: View {
             VStack {
                 header
                 
+                HomeStatsView(viewModel: StateObject(wrappedValue: viewModel),
+                              showPortfolio: $showPortfolio)
                 SearchBarView(text: $viewModel.searchText)
                 
                 columnTitles
@@ -46,7 +48,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView(service: CoinDataService(manager: CoinManager()),
+            HomeView(coinService: CoinDataService(manager: CoinManager()),
+                     marketService: MarketDataService(manager: MarketManager()),
                      showPortfolio: false)
                 .navigationBarHidden(true)
         }

@@ -10,7 +10,8 @@ import SwiftUI
 enum CompositionRoot {
     static var composeApp: some View {
         NavigationView {
-            HomeView(service: CoinDataService(manager: CoinManager()),
+            HomeView(coinService: CoinDataService(manager: CoinManager()),
+                     marketService: MarketDataService(manager: MarketManager()),
                      showPortfolio: false)
         }
     }

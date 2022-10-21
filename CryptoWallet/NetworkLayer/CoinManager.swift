@@ -41,5 +41,4 @@ final class CoinManager: CoinNetworkManager {
         }
         return output.data
     }
-    
 }

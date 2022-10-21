@@ -10,24 +10,35 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    private let service: CoinDataServiceProtocol
+    private let coinService: CoinDataServiceProtocol
+    private let marketService: MarketDataServiceProtocol
     private var cancellables: Set<AnyCancellable> = []
     @Published var allCoins: [CoinModel] = []
+    @Published var statistics: [StatisticModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     @Published var searchText: String = ""
     
-    init(service: CoinDataServiceProtocol) {
-        self.service = service
+    init(coinService: CoinDataServiceProtocol, marketService: MarketDataServiceProtocol) {
+        self.coinService = coinService
+        self.marketService = marketService
         addSubscribers()
     }
     
     func loadCoins() {
-        service.getCoins()
+        coinService.getCoins()
+    }
+    
+    func loadMarketData() {
+        marketService.getMarket().sink { _ in }
+        receiveValue: { [weak self] statistics in
+            self?.statistics = statistics
+        }.store(in: &cancellables)
     }
     
     private func addSubscribers() {
         $searchText
-            .combineLatest(service.allCoins)
+            .combineLatest(coinService.allCoins)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .map(filterCoins)
             .sink { [weak self] coins in
                 self?.allCoins = coins

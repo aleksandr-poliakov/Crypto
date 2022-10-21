@@ -17,7 +17,7 @@ import Foundation
 struct CoinModel: Identifiable, Codable {
     let id, symbol, name: String?
     let image: String?
-    let currentPrice: Double?
+    let currentPrice: Double
     let marketCap, marketCapRank, fullyDilutedValuation: Int?
     let high24H, low24H, priceChange24H, priceChangePercentage24H, totalVolume: Double?
     let marketCapChange24H, marketCapChangePercentage24H: Double?
@@ -30,6 +30,37 @@ struct CoinModel: Identifiable, Codable {
     let sparklineIn7D: SparklineIn7D?
     let priceChangePercentage24HInCurrency: Double?
     let currentHoldings: Double?
+    
+    init(id: String?, symbol: String?, name: String?, image: String?, currentPrice: Double, marketCap: Int?, marketCapRank: Int?, fullyDilutedValuation: Int?, high24H: Double?, low24H: Double?, priceChange24H: Double?, priceChangePercentage24H: Double?, totalVolume: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, circulatingSupply: Double?, totalSupply: Double?, maxSupply: Double?, ath: Double?, athChangePercentage: Double?, athDate: String?, atl: Double?, atlChangePercentage: Double?, atlDate: String?, lastUpdated: String?, sparklineIn7D: SparklineIn7D?, priceChangePercentage24HInCurrency: Double?, currentHoldings: Double? = 1) {
+        self.id = id
+        self.symbol = symbol
+        self.name = name
+        self.image = image
+        self.currentPrice = currentPrice
+        self.marketCap = marketCap
+        self.marketCapRank = marketCapRank
+        self.fullyDilutedValuation = fullyDilutedValuation
+        self.high24H = high24H
+        self.low24H = low24H
+        self.priceChange24H = priceChange24H
+        self.priceChangePercentage24H = priceChangePercentage24H
+        self.totalVolume = totalVolume
+        self.marketCapChange24H = marketCapChange24H
+        self.marketCapChangePercentage24H = marketCapChangePercentage24H
+        self.circulatingSupply = circulatingSupply
+        self.totalSupply = totalSupply
+        self.maxSupply = maxSupply
+        self.ath = ath
+        self.athChangePercentage = athChangePercentage
+        self.athDate = athDate
+        self.atl = atl
+        self.atlChangePercentage = atlChangePercentage
+        self.atlDate = atlDate
+        self.lastUpdated = lastUpdated
+        self.sparklineIn7D = sparklineIn7D
+        self.priceChangePercentage24HInCurrency = priceChangePercentage24HInCurrency
+        self.currentHoldings = currentHoldings
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -60,7 +91,7 @@ struct CoinModel: Identifiable, Codable {
     }
     
     var currentHoldingValue: Double {
-        return (currentHoldings ?? 0) * (currentPrice ?? 0)
+        return (currentHoldings ?? 0) * currentPrice
     }
     
     var rank: Int  {

@@ -25,7 +25,7 @@ final class CoinDataService: CoinDataServiceProtocol {
     
     private let manager: CoinNetworkManager
     private var cancellable: AnyCancellable?
-    @Published var coins: [CoinModel] = []
+    @Published private var coins: [CoinModel] = []
     var allCoins: Published<[CoinModel]>.Publisher { $coins }
     
     init(manager: CoinNetworkManager) {
